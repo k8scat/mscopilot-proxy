@@ -227,7 +227,6 @@ async function handleRequest(request, env,ctx) {
         }
         if (resUrl.pathname == "/") {
           retBody = injectionHtmlToHead(retBody, CopilotInjection);
-          retBody = injectionHtmlToBody(retBody, LoginInJectionBody);
         }
         if (resUrl.pathname == "/turing/captcha/challenge") {
           retBody = retBody.replaceAll("https://challenges.cloudflare.com", `${porxyOrigin}`);
