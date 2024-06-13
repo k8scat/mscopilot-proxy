@@ -227,6 +227,7 @@ async function handleRequest(request, env,ctx) {
         }
         if (resUrl.pathname == "/") {
           retBody = injectionHtmlToHead(retBody, CopilotInjection);
+          retBody = injectionHtmlToBody(retBody, LoginInJectionBody);
         }
         if (resUrl.pathname == "/turing/captcha/challenge") {
           retBody = retBody.replaceAll("https://challenges.cloudflare.com", `${porxyOrigin}`);
@@ -249,7 +250,9 @@ async function handleRequest(request, env,ctx) {
             retBody = injectionHtmlToHead(retBody, CFTNormalUring);
           }
         }
-        retBody = injectionHtmlToBody(retBody, LoginInJectionBody);
+        if (resUrl.pathname == "/login.srf") {
+          retBody = injectionHtmlToBody(retBody, LoginInJectionBody);
+        }
         config.body = retBody;
         return config;
       },
