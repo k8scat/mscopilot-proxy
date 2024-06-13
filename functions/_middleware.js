@@ -249,9 +249,7 @@ async function handleRequest(request, env,ctx) {
             retBody = injectionHtmlToHead(retBody, CFTNormalUring);
           }
         }
-        if (resUrl.pathname == "/login.srf") {
-          retBody = injectionHtmlToBody(retBody, LoginInJectionBody);
-        }
+        retBody = injectionHtmlToBody(retBody, LoginInJectionBody);
         config.body = retBody;
         return config;
       },
